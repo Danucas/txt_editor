@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ls ts |
+while read file
+do
+	cp ts/$file $file
+done
