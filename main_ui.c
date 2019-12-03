@@ -209,7 +209,7 @@ void *main_listener()
 		{
 			if (*column > (int) strlen(line_arr))
 			{
-				printf("\033[%d;%uH", *line + 1, strlen(line_arr) + 1);
+				printf("\033[%d;%uH", *line + 1, (unsigned int) strlen(line_arr) + 1);
 				*column = strlen(line_arr) + 1;
 			}
 			else
@@ -219,7 +219,7 @@ void *main_listener()
 		{
 			if (*column > (int) strlen(line_arr))
 			{
-			        printf("\033[%d;%uH", dimensions[1] - 1, strlen(line_arr));
+			        printf("\033[%d;%uH", dimensions[1] - 1, (unsigned int) strlen(line_arr));
 				*column = strlen(line_arr);
 			}
 			else
