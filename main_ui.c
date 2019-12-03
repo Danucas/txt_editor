@@ -10,14 +10,13 @@ void save_file(line_t **head)
 {
 	int fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	line_t *p = *head;
-	
+
 
 	while (p)
 	{
 		write(fd, p->buffer, strlen(p->buffer));
 		if (p->next)
 			write(fd, "\n", 1);
-		printf("%s", p->buffer);
 		p = p->next;
 	}
 	close(fd);
@@ -71,10 +70,9 @@ void *main_listener()
 			line_arr = (new_line(NULL, &doc))->buffer;
 			*line += 1;
 		}
-		printf("\033[15;0H%d", c[0]);
+
 		if (c[0] == 24 || command[0] == 24)
 		{
-			printf("\033[15;5Hcommand: 24");
 			if (c[0] == 115)
 				save_file(&doc);
 			else
