@@ -25,6 +25,10 @@ more color codes
      32: green
      33: yellow
 
+## Screenshots
+
+![terminal view] (/pics/pic1.png)
+
 ## Authors
 
 ###   Daniel Rodriguez Castillo
