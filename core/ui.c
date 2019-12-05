@@ -125,11 +125,9 @@ void *main_listener()
 
 /*		printf("\033[s");
 		printf("\nPressed key_code: ");
-		if (c[0] != 126 && c[0] != 51)
-		{
-			command[0] = c[0];
-		}
-		printf("%u ", c[0]);
+		printf("%d ", c[0]);*/
+
+/*		printf("%u ", c[0]);
 		int s = 0;
 		while (command[s] != '\0')
 		{
@@ -137,6 +135,7 @@ void *main_listener()
 			s++;
 		}
 		printf("   ");*/
+
 
 /* handling new line enter pressed*/
 		if (c[0] == '\n')
@@ -225,6 +224,15 @@ void *main_listener()
 			{
 				pos = 0;
 				/* printing command*/
+				message("comm ");
+				int s = 0;
+				while (command[s] != '\0')
+				{
+					printf(" %d", command[s]);
+					s++;
+				}
+				printf("   ");
+
 				printf("%s", command);
 
 				if (command[1] == 91 && command[2] == 51)
@@ -253,6 +261,18 @@ void *main_listener()
 						}
 					}
 					tcsetattr(STDIN_FILENO, TCSANOW, &old);
+				}
+				if (command[1] == 91 && command[2] == 72)
+				{
+					/* home */
+					printf(" home");
+					*column = 1;
+				}
+				if (command[1] == 91 && command[2] == 70)
+				{
+					/* end */
+					*column = strlen(line_arr) + 1;
+					printf(" end");
 				}
 				if (command[2] == 65)
 				{

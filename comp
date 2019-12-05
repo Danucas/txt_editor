@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -Wall -Werror -Wextra -pedantic *.c -o a -lpthread
+gcc -Wall -Werror -Wextra -pedantic core/*.c -o a -lpthread
