@@ -21,6 +21,9 @@ typedef struct LINE{
 	struct LINE *next;
 }line_t;
 
+void *editor();
+
+
 int *read_window();
 void window_resize();
 void setui();
@@ -29,6 +32,13 @@ void setui();
 
 char *_tostring(int number);
 
-void *main_listener();
 
+void save_file(line_t **doc);
+void remove_node(line_t **head, int index);
+char *get_node(line_t **head);
+line_t *new_line(char *content, line_t **head);
+
+void clear_line(int line);
+void message(char *string);
+void print_line(int line, char *line_arr);
 #endif

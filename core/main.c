@@ -2,7 +2,7 @@
 
 int main(int ac, char **av, char **envp)
 {
-	pthread_t key_listener;
+	pthread_t edit;
 	(void) ac;
 	(void) av;
 	(void) envp;
@@ -27,11 +27,11 @@ int main(int ac, char **av, char **envp)
 
 
 /*initializing key-pressed listener*/
-	if (pthread_create(&key_listener, NULL, main_listener, NULL))
+	if (pthread_create(&edit, NULL, editor, NULL))
 	{
 		perror("Error: ");
 	}
-	pthread_join(key_listener, NULL);
+	pthread_join(edit, NULL);
 /*key listener */
 	return (0);
 }
