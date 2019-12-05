@@ -27,7 +27,7 @@ more color codes
 
 ## Screenshots
 
-![terminal view] (/pics/pic1.png)
+![terminal view](/pics/pic1.png)
 
 ## Authors
 
