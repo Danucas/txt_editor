@@ -8,7 +8,7 @@ int main(int ac, char **av, char **envp)
 	(void) envp;
 	if (ac > 1)
 	{
-		filename = av[1];
+		filename = strdup(av[1]);
 	}
 	else
 	{
@@ -24,6 +24,7 @@ int main(int ac, char **av, char **envp)
 /*setting ui*/
 	printf("\033[2J");/*clean the window*/
 	setui();
+	console_log("initializing\n================================\n");
 
 
 /*initializing key-pressed listener*/
@@ -33,5 +34,8 @@ int main(int ac, char **av, char **envp)
 	}
 	pthread_join(edit, NULL);
 /*key listener */
+	free(line_column);
+	free(filename);
+	free(dimensions);
 	return (0);
 }

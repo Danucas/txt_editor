@@ -17,9 +17,9 @@ void setui()
 
 	if (filename == NULL)
 	{
-		filename = "new_file.myown";
+		filename = strdup("new_file.myown");
 	}
-	int cou = printf("File name: %s    window size: %d x %d", filename, dimensions[0], dimensions[1]);
+	int cou = printf("File: %s | size: %d x %d", filename, dimensions[0], dimensions[1]);
 	while (cou <= dimensions[0])
 	{
 		printf(" ");
@@ -28,7 +28,7 @@ void setui()
 	/*      end of header*/
 /*      print bottom        */
 	printf("\033[%d;0H", dimensions[1]);
-	y = printf("\033[30;47m--line: %d, column: %d--", line_column[0], line_column[1]);
+	y = printf("\033[30;47m--line: %d, column: %d-- Easix", line_column[0], line_column[1]);
 	while (y <= dimensions[0])
 	{
 		printf(" ");

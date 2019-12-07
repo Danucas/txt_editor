@@ -7,6 +7,10 @@ void save_file(line_t **head)
 	if (!strncmp(filename, "new_file.myown", 14))
 	{
 		message("save as: ");
+		if (filename != NULL)
+		{
+			free(filename);
+		}
 		filename = malloc(100);
 		readed = getline(&filename, &size , stdin);
 		if (readed > 0)

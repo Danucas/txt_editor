@@ -54,13 +54,50 @@ int check_keywords(char *buff)
 	(void) yellow;
 	return (1);
 }
+void console_log(char *string)
+{
+	char *out = malloc(100);
+/*	strcat(out, "echo ");*/
+	strcat(out, string);
+/*	strcat(out, " > /dev/pts/19");*/
+        int console_fd = open("/dev/pts/19", O_WRONLY);
+	if (console_fd)
+	{
+		write(console_fd, out, strlen(out));
+	}
+	free(out);
+	close(console_fd);
+}
 
-
+void print_doc(line_t **doc)
+{
+	char *output = malloc(100);
+	int pos = 2;
+	line_t *l = *doc;
+	setui();
+	printf("\033[2;0H");
+	while (l != NULL)
+	{
+		print_line(pos, l->buffer);
+		output[0] = '\0';
+		strcat(output, "position: ");
+		strcat(output, _tostring(pos));
+		strcat(output, "cont: ");
+		strcat(output, l->buffer);
+		strcat(output, "\n");
+		console_log(output);
+		printf("\n");
+		l = l->next;
+		pos++;
+	}
+	free(output);
+}
 void print_line(int line, char *line_arr)
 {
 	char *keyword = malloc(100);
 	int pos = 0;
 	int key_c = 0;
+	printf("\033[%d;0m", line);
 	while(line_arr[pos] != '\0')
 	{
 		if (line_arr[pos] == ' ' || line_arr[pos + 1] == '\0')

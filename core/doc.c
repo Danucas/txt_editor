@@ -63,10 +63,23 @@ line_t *new_line(char *content, line_t **head)
 	}
 	new_node->buffer = n_line;
 	pos = 1;
+
+	char *out = malloc(100);
+	char *line = _tostring(line_column[0]);
+	out[0] = '\0';
+	strcat(out, "line: ");
+	strcat(out, line);
+	strcat(out, "cont: ");
+	strcat(out, n_line);
+	strcat(out, "\n");
+	console_log(out);
+	free(line);
+
 	if (last_list == NULL)
 	{
 		new_node->next = NULL;
 		*head = new_node;
+		free(out);
 		return (new_node);
 	}
 	while (last_list)
@@ -84,5 +97,6 @@ line_t *new_line(char *content, line_t **head)
 		last_list = last_list->next;
 		pos++;
 	}
+	free(out);
 	return (new_node);
 }

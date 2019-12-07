@@ -13,6 +13,10 @@ int *read_window(void)
         char wid[4];
         char hei[4];
         int width, height;
+	if (dimensions != NULL)
+	{
+		free(dimensions);
+	}
 	int *dim = malloc(sizeof(int) * 2);
 
         fgets(wid, 4, wfile);
