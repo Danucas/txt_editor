@@ -1,8 +1,11 @@
 hola miguelito
+que pasa miguel
 
 
+carenalganada
 
-carepito gonorreito
+oh oh oh
 
 
-nknknjknknk
+nada personal
+nada que no se " pueda creer " es un poco " inpensable"

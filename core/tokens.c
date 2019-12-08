@@ -75,14 +75,12 @@ size_t _get_list_len(char *line, char *token)
 	{
 		if (check_token(&(line[lc]), token) || line[lc + 1] == '\0')
 		{
-			if (!check_token(&(line[lc + 1]), token))
-			{
 				argc++;
 				if (line[lc + 1] == '\0')
 				{
+					argc++;
 					break;
 				}
-			}
 		}
 		lc++;
 
@@ -121,33 +119,26 @@ char **_strtok(char *line, char *token)
 	{
 		if (check_token(&(line[lc]), token) || line[lc + 1] == '\0')
 		{
-			if (!check_token(&(line[lc + 1]), token))
-			{
-				if (line[lc + 1] == '\0')
-				{	buff[cont] = line[lc];
-					buff[cont + 1] = '\0';
-					end = 1;
-				}
-				else
-				{
-					buff[cont] = '\0';
-				}
-				cont = 0;
-				while (buff[cont] != '\0')
-				{
-					if (check_token(&(buff[cont]), token))
-					{
-						buff[cont] = '\0';
-						break;
-					}
-					cont++;
-				}
-				args[argc] = str_dup(buff);
-				argc++;
-				cont = 0;
-				if (end == 1)
-					break;
+			if (line[lc + 1] == '\0')
+			{	buff[cont] = line[lc];
+				buff[cont + 1] = '\0';
+				end = 1;
 			}
+			else
+			{
+				buff[cont] = '\0';
+			}
+			if (cont == 0)
+			{
+				buff[0] = '\n';
+				buff[1] = '\0';
+			}
+			if (argc < ac)
+				args[argc] = str_dup(buff);
+			argc++;
+			cont = 0;
+			if (end == 1)
+				break;
 		}
 		else
 		{

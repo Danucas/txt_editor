@@ -2,6 +2,18 @@
 
 int isvariable = 0;
 int iscomment = 0;
+int isquote = 0;
+int quoting(char *buff)
+{
+	int pos = 0;
+	while (buff[pos] != '\0')
+	{
+		if (buff[pos] == '"')
+			return (1);
+		pos++;
+	}
+	return (0);
+}
 int check_keywords(char *buff)
 {
 	int pos = 0;
@@ -9,6 +21,7 @@ int check_keywords(char *buff)
 	char *red = "\x1b[38;5;9m";
 	char *yellow = "\x1b[38;5;202m";
 	char *green = "\x1b[38;5;40m";
+	char *qoutes = "\x1b[38;5;76m";
 	char *cyan = "\x1b[38;5;92m";
 	char *magenta = "\x1b[38;5;200m";
 	if (!strncmp(buff, "if ", 3) || !strncmp(buff, "else ", 5))
@@ -29,6 +42,11 @@ int check_keywords(char *buff)
 	        printf("%s", red);
 		iscomment = 1;
 	}
+	else if(!isquote && quoting(buff))
+	{
+		printf("%s", qoutes);
+		isquote = 1;
+	}
 	else
 	{
 		printf("\033[0m");
@@ -44,6 +62,14 @@ int check_keywords(char *buff)
 				iscomment = 0;
 			}
 			printf("%s", red);
+		}
+		if (isquote)
+		{
+			if(quoting(buff))
+			{
+				isquote = 0;
+			}
+			printf("%s", qoutes);
 		}
 	}
 
@@ -79,13 +105,6 @@ void print_doc(line_t **doc)
 	while (l != NULL)
 	{
 		print_line(pos, l->buffer);
-		output[0] = '\0';
-		strcat(output, "position: ");
-		strcat(output, _tostring(pos));
-		strcat(output, "cont: ");
-		strcat(output, l->buffer);
-		strcat(output, "\n");
-		console_log(output);
 		printf("\n");
 		l = l->next;
 		pos++;

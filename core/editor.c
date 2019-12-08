@@ -88,8 +88,8 @@ void *editor()
 		if (c[0] == '\n')
 		{
 			*column = 1;
-			line_arr = (new_line(NULL, &doc))->buffer;
 			*line += 1;
+			line_arr = (new_line(NULL, &doc))->buffer;
 		}
 		printf("\033[u");
 /*   SAVE AND EXIT */

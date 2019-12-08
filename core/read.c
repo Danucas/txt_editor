@@ -7,7 +7,7 @@ char *read_file(line_t **head)
 	char *buff = malloc(1024);
 	char *out = malloc(100);
 	char **lines;
-	int pos = 0, copy = 0;
+	int pos = 0, copy = 1;
 	message("reading ");
 	printf("%s", filename);
 
@@ -29,7 +29,7 @@ char *read_file(line_t **head)
 			strcat(out, j);
 			free(j);
 			strcat(out, " cop_pos: ");
-			j = _tostring(copy + 1);
+			j = _tostring(copy);
 			strcat(out, j);
 			free(j);
 			strcat(out, " cont: ");
