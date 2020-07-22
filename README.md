@@ -1,5 +1,5 @@
-# Text Editor (unamed)
-Text-editor (Unamed) is an open source project recovering all the knowledge that i have been adquire during all my estance at Holberton School, the features added to this project are not defined
+# Text Editor
+Text-editor is an open source project recovering all the knowledge that i have been adquire during all my estance at Holberton School, the features added to this project are not defined
 yet, but the final purpose of this excercise is to build an all custom tool that allow us to make more better tools.
 
 You are totally invited to contribute in this repo.
