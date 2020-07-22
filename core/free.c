@@ -20,10 +20,14 @@ void free_args(char **args)
 		free(args);
 	}
 }
-
+/**
+ *free_linked - free the linked list containing the lines
+ *@list: the args to free
+ */
 void free_linked(line_t **list)
 {
 	line_t *l = *list, *prev = *list;
+
 	while (l != NULL)
 	{
 		l = l->next;

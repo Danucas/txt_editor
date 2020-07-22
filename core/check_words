@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Check substrings coincidences in files
 ls *.c |
 while read file
 do
